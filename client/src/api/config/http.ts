@@ -1,5 +1,5 @@
 import axios, { AxiosInstance } from "axios";
-const baseURL = "http://127.0.0.1:8080/api/v1/";
+const baseURL = "http://127.0.0.1:8080/api/tmdb/v1/";
 class Http {
    instance: AxiosInstance;
    constructor() {

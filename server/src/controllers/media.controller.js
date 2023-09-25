@@ -7,6 +7,7 @@ import tokenMiddleware from "../middlewares/token.middleware.js";
 
 const getList = async (req, res) => {
    try {
+      console.log("List");
       const { page } = req.query;
       const { mediaType, mediaCategory } = req.params;
 
@@ -24,8 +25,9 @@ const getList = async (req, res) => {
 
 const getGenres = async (req, res) => {
    try {
+      console.log("Genres");
       const { mediaType } = req.params;
-      const response = await tmdbApi.getGenres(mediaType);
+      const response = await tmdbApi.mediaGenres({ mediaType });
       return responseHandler.ok(res, response);
    } catch (error) {
       responseHandler.error(res);
@@ -34,6 +36,7 @@ const getGenres = async (req, res) => {
 
 const search = async (req, res) => {
    try {
+      console.log("Search");
       const { mediaType } = req.params;
       const { query, page } = req.query;
       const response = await tmdbApi.mediaSearch({
@@ -49,8 +52,8 @@ const search = async (req, res) => {
 
 const getDetail = async (req, res) => {
    try {
+      console.log("Detail");
       const { mediaType, mediaId } = req.params;
-
       const params = { mediaType, mediaId };
       const media = await tmdbApi.mediaDetail(params);
       media.credits = await tmdbApi.mediaCredits(params);
@@ -58,7 +61,7 @@ const getDetail = async (req, res) => {
       const videos = await tmdbApi.mediaVideos(params);
       media.videos = videos;
 
-      const recommend = await tmdbApi.mediaRecommend(mediaId);
+      const recommend = await tmdbApi.mediaRecommend(params);
       media.recommend = recommend;
 
       const images = await tmdbApi.mediaImages(params);
@@ -88,5 +91,15 @@ const getDetail = async (req, res) => {
       responseHandler.error(res);
    }
 };
+const getTrending = async (req, res) => {
+   try {
+      console.log("Trending");
+      const { mediaType, time } = req.params;
+      const response = await tmdbApi.mediaTrending({ mediaType, time });
+      responseHandler.ok(res, response);
+   } catch (error) {
+      responseHandler.error(res);
+   }
+};
 
-export default { getList, getGenres, search, getDetail };
+export default { getList, getGenres, search, getDetail, getTrending };

@@ -1,3 +1,4 @@
+import { axiosResList } from "@/types/axiosRes";
 import privateClient from "./config/private.client";
 import publicClient from "./config/public.client";
 
@@ -10,9 +11,9 @@ const mediaEndpoints = {
       mediaType: string;
       mediaCategory: string;
       page: number;
-   }) => `${mediaType}/${mediaCategory}/query?page=${page}`,
+   }) => `media/${mediaType}/list/${mediaCategory}?page=${page}`,
    detail: ({ mediaType, mediaId }: { mediaType: string; mediaId: number }) =>
-      `${mediaType}/detail/${mediaId}`,
+      `media/${mediaType}/detail/${mediaId}`,
    search: ({
       mediaType,
       query,
@@ -21,17 +22,17 @@ const mediaEndpoints = {
       mediaType: string;
       query: string;
       page: number;
-   }) => `${mediaType}/search?query=${query}&page=${page}`,
-   trending: ({ mediaType, query }: { mediaType: string; query: string }) =>
-      `trending/${mediaType}/${query}`,
+   }) => `media/${mediaType}/search?query=${query}&page=${page}`,
+   trending: ({ mediaType, time }: { mediaType: string; time: string }) =>
+      `media/${mediaType}/trending/${time}`,
    toprate: ({ mediaType, page }: { mediaType: string; page: number }) =>
-      `${mediaType}/top-rate/list?page=${page}`,
+      `media/${mediaType}/top-rate/list?page=${page}`,
 };
 
 const mediaApi = {
    getList: async ({ mediaType, mediaCategory, page }: any) => {
       try {
-         const res = await publicClient.get(
+         const res = await publicClient.get<axiosResList, axiosResList>(
             mediaEndpoints.list({ mediaType, mediaCategory, page })
          );
          return { res };
@@ -61,35 +62,16 @@ const mediaApi = {
    },
    trending: async ({
       mediaType,
-      query,
+      time,
    }: {
       mediaType: string;
-      query: string;
+      time: string;
    }) => {
       try {
          const res = await publicClient.get(
             mediaEndpoints.trending({
                mediaType,
-               query,
-            })
-         );
-         return { res };
-      } catch (error) {
-         return { error };
-      }
-   },
-   toprate: async ({
-      mediaType,
-      page,
-   }: {
-      mediaType: string;
-      page: number;
-   }) => {
-      try {
-         const res = await publicClient.get(
-            mediaEndpoints.toprate({
-               mediaType,
-               page,
+               time,
             })
          );
          return { res };

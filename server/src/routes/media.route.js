@@ -3,12 +3,14 @@ import mediaController from "../controllers/media.controller.js";
 
 const router = express.Router();
 
-router.get("/search", mediaController.search);
+router.get("/:mediaType/search", mediaController.search);
 
-router.get("/genres", mediaController.getGenres);
+router.get("/:mediaType/genres", mediaController.getGenres);
 
-router.get("/detail/:mediaId", mediaController.getDetail);
+router.get("/:mediaType/detail/:mediaId", mediaController.getDetail);
 
-router.get("/list/:mediaCategory", mediaController.getList);
+router.get("/:mediaType/list/:mediaCategory", mediaController.getList);
+
+router.get("/:mediaType/trending/:time", mediaController.getTrending);
 
 export default router;

@@ -4,6 +4,7 @@ import cors from "cors";
 import http from "http";
 import mongoose from "mongoose";
 import "dotenv/config";
+import router from "./src/routes/index.js";
 
 const app = express();
 
@@ -15,10 +16,10 @@ app.use(
    })
 );
 app.use(cookieParser());
-app.use("/api/tmdb/v1");
+app.use("/api/tmdb/v1/", router);
 
 const port = process.env.PORT || 8080;
-const server = hhtp.createServer(app);
+const server = http.createServer(app);
 mongoose
    .connect(process.env.MONGODB_URL)
    .then(() => {

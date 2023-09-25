@@ -28,7 +28,7 @@ const Navbar = () => {
          }`}
       >
          <div className="logo w-60 flex h-[60px] items-center justify-end gap-2">
-            <Image src="/Logo.png" width={50} height={50} alt="" />
+            <Image src="/images/Logo.png" width={50} height={50} alt="" />
             <span className={`text-3xl text-white  ${Mexon.className}`}>
                Matrix
             </span>

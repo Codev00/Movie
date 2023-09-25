@@ -2,12 +2,12 @@ import axiosClient from "../axios/http.js";
 import tmdbEndpoint from "./tmdb.endpoint.js";
 
 const tmdbApi = {
-   mediaList: async ({ mediaType, mediaCatogory, page }) =>
+   mediaList: async ({ mediaType, mediaCategory, page }) =>
       await axiosClient.get(
-         tmdbEndpoint.mediaList({ mediaType, mediaCatogory, page })
+         tmdbEndpoint.mediaList({ mediaType, mediaCategory, page })
       ),
-   mediaDetail: async ({ mediaType, page }) =>
-      await axiosClient.get(tmdbEndpoint.mediaDetail({ mediaType, page })),
+   mediaDetail: async ({ mediaType, mediaId }) =>
+      await axiosClient.get(tmdbEndpoint.mediaDetail({ mediaType, mediaId })),
    mediaGenres: async ({ mediaType }) =>
       await axiosClient.get(tmdbEndpoint.mediaGenres({ mediaType })),
    mediaCredits: async ({ mediaType, mediaId }) =>
@@ -24,6 +24,9 @@ const tmdbApi = {
       await axiosClient.get(
          tmdbEndpoint.mediaSearch({ mediaType, query, page })
       ),
+   mediaTrending: async ({ mediaType, time }) =>
+      await axiosClient.get(tmdbEndpoint.mediaTrending({ mediaType, time })),
+
    personDetail: async ({ personId }) =>
       await axiosClient.get(tmdbEndpoint.personDetail({ personId })),
 

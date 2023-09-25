@@ -1,29 +1,31 @@
 import mongoose from "mongoose";
-import modelOption from "./model.option.js";
+import modelOptions from "./model.options.js";
 import crypto from "crypto";
 
-const userSchema = new mongoose.Schema({
-   username: {
-      type: string,
-      required: true,
-      unipue: true,
+const userSchema = new mongoose.Schema(
+   {
+      username: {
+         type: String,
+         required: true,
+         unique: true,
+      },
+      displayName: {
+         type: String,
+         required: true,
+      },
+      password: {
+         type: String,
+         required: true,
+         select: false,
+      },
+      salt: {
+         type: String,
+         required: true,
+         select: false,
+      },
    },
-   displayName: {
-      type: string,
-      required: true,
-   },
-   password: {
-      type: string,
-      required: true,
-      select: false,
-   },
-   salt: {
-      type: string,
-      required: true,
-      select: false,
-   },
-   modelOption,
-});
+   modelOptions
+);
 
 userSchema.methods.setPassword = (password) => {
    this.salt = crypto.randomBytes(16).toString("hex");

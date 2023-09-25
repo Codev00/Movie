@@ -7,7 +7,7 @@ import personRoute from "../routes/person.route.js";
 const router = express.Router();
 
 router.use("/user", userRoute);
-router.use("/:mediaType", mediaRoute);
+router.use("/media", mediaRoute);
 router.use("/review", reviewRoute);
 router.use("/person", personRoute);
 

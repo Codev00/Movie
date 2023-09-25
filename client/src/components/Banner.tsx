@@ -1,7 +1,7 @@
 "use client";
 import mediaApi from "@/api/media.api";
 import React, { useEffect, useState } from "react";
-import { MediaType } from "@/types/media.type";
+import { MediaTypeList } from "@/types/mediaList.type";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
 import "swiper/css";
@@ -15,7 +15,7 @@ const Banner = ({
    mediaType: string;
    mediaCategory: string;
 }) => {
-   const [medias, setMedia] = useState<MediaType[]>([]);
+   const [medias, setMedia] = useState<MediaTypeList[]>([]);
    useEffect(() => {
       const getMovieList = async () => {
          const { res, error } = await mediaApi.getList({
@@ -23,7 +23,7 @@ const Banner = ({
             mediaCategory,
             page: 1,
          });
-         if (res) setMedia(res.results.slice(0, 10));
+         if (res) setMedia(res.results);
          if (error) console.log(error);
       };
       getMovieList();
@@ -31,12 +31,11 @@ const Banner = ({
    return (
       <div className="h-screen w-screen relative hidden lg:block">
          <Swiper
-            modules={[Autoplay, Navigation]}
+            modules={[Autoplay]}
             grabCursor={true}
             spaceBetween={0}
             slidesPerView={1}
             autoplay={{ delay: 3000 }}
-            navigation={true}
             loop={true}
             className="relative w-full h-full mySwiper"
          >

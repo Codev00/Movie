@@ -1,5 +1,5 @@
-const modelOption = {
-   toJson: {
+const modelOptions = {
+   toJSON: {
       virtual: true,
       transform: (_, obj) => {
          delete obj._id;
@@ -17,4 +17,4 @@ const modelOption = {
    timestamps: true,
 };
 
-export default modelOption;
+export default modelOptions;

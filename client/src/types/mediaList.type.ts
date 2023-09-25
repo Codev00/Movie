@@ -1,4 +1,4 @@
-export type MediaType = {
+export type MediaTypeList = {
    adult: boolean;
    backdrop_path: string;
    genre_ids: number[];
