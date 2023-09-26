@@ -1,6 +1,7 @@
-import { axiosResList } from "@/types/axiosRes";
+import { axiosResList } from "@/types/axiosRes.type";
 import privateClient from "./config/private.client";
 import publicClient from "./config/public.client";
+import { MediaTypeList } from "@/types/media.type";
 
 const mediaEndpoints = {
    list: ({
@@ -68,7 +69,7 @@ const mediaApi = {
       time: string;
    }) => {
       try {
-         const res = await publicClient.get(
+         const res = await publicClient.get<axiosResList, axiosResList>(
             mediaEndpoints.trending({
                mediaType,
                time,

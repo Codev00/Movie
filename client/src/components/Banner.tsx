@@ -1,7 +1,7 @@
 "use client";
 import mediaApi from "@/api/media.api";
 import React, { useEffect, useState } from "react";
-import { MediaTypeList } from "@/types/mediaList.type";
+import { MediaTypeList } from "@/types/media.type";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
 import "swiper/css";
@@ -67,7 +67,9 @@ const Banner = ({
                               <h2 className="text-6xl font-bold mb-5 text-white">
                                  {item.title}
                               </h2>
-                              <div className="text-white">{item.overview}</div>
+                              <div className="text-white text-justify">
+                                 {item.overview}
+                              </div>
                               <div className="mt-10">
                                  <Link
                                     href="#_"

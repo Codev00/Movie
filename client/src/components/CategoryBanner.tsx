@@ -4,17 +4,19 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
-import { MediaTypeList } from "@/types/mediaList.type";
+import { MediaTypeList } from "@/types/media.type";
 import tmdbConfig, { mediaType } from "@/api/config/tmdb.config";
 import mediaApi from "@/api/media.api";
 import Image from "next/image";
 import dayjs from "dayjs";
 import CircleRating from "./CircleRating";
+import Link from "next/link";
 
 const CategoryBanner = ({ name, data }: { name: string; data: string[] }) => {
    const [trending, setTrending] = useState<MediaTypeList[]>([]);
    const [time, setTime] = useState(data[0]);
    const [mediaType, setMediaType] = useState("movie");
+
    useEffect(() => {
       const getTrendingList = async () => {
          const { res, error } = await mediaApi.trending({
@@ -44,7 +46,13 @@ const CategoryBanner = ({ name, data }: { name: string; data: string[] }) => {
       }
    };
    return (
-      <div className="my-5 md:my-10 w-full md:container">
+      <div
+         className="my-5 xl:my-10 w-full md:container"
+         data-aos="fade-up"
+         data-aos-duration="1000"
+         data-aos-delay="150"
+         data-aos-offset="150"
+      >
          <div className="flex flex-row w-full justify-between mb-5 px-2 md:px-10">
             <div className="text-2xl text-white font-bold">{name}</div>
             <div className=" bg-white rounded-3xl p-[2px] flex gap-1 transition-all">
@@ -74,6 +82,10 @@ const CategoryBanner = ({ name, data }: { name: string; data: string[] }) => {
             <Swiper
                modules={[Autoplay]}
                spaceBetween={10}
+               autoplay={{
+                  delay: 2000,
+                  pauseOnMouseEnter: true,
+               }}
                slidesPerView={"auto"}
                loop={true}
                grid={{ rows: 1 }}
@@ -99,26 +111,30 @@ const CategoryBanner = ({ name, data }: { name: string; data: string[] }) => {
                {trending ? (
                   trending.map((item, i) => (
                      <SwiperSlide className="" key={i}>
-                        <div className="relative cursor-pointer items-stretch">
-                           <Image
-                              src={tmdbConfig.posterPath(item.poster_path)}
-                              width={200}
-                              height={300}
-                              alt=""
-                              className="rounded-xl "
-                           />
-                           <CircleRating
-                              rating={Number(item.vote_average.toFixed(1))}
-                           />
-                        </div>
-                        <div className="mt-8">
-                           <span className="block whitespace-nowrap overflow-hidden text-ellipsis mb-1 w-[100px] md:w-[120px] lg:w-[130px] xl:w-[150px] font-semibold cursor-pointer">
-                              {item.title || item?.name}
-                           </span>
-                           <span className="text-gray-600 font-semibold">
-                              {dayjs(item.release_date).format("MMM D, YYYY")}
-                           </span>
-                        </div>
+                        <Link href={`/${mediaType}/${item.id}`}>
+                           <div className="relative cursor-pointer items-stretch">
+                              <Image
+                                 src={tmdbConfig.posterPath(item.poster_path)}
+                                 width={200}
+                                 height={300}
+                                 alt=""
+                                 className="rounded-xl "
+                              />
+                              <CircleRating
+                                 rating={Number(item.vote_average.toFixed(1))}
+                              />
+                           </div>
+                           <div className="mt-8">
+                              <span className="block whitespace-nowrap overflow-hidden text-ellipsis mb-1 w-[100px] md:w-[120px] lg:w-[130px] xl:w-[150px] font-semibold cursor-pointer">
+                                 {item.title || item?.name}
+                              </span>
+                              <span className="text-gray-600 font-semibold">
+                                 {dayjs(item.release_date).format(
+                                    "MMM D, YYYY"
+                                 )}
+                              </span>
+                           </div>
+                        </Link>
                      </SwiperSlide>
                   ))
                ) : (

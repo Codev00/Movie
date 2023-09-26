@@ -1,10 +1,12 @@
 /** @type {import('tailwindcss').Config} */
+import { nextui } from "@nextui-org/react";
 module.exports = {
    content: [
       "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
       "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
       "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
       "./node_modules/flowbite-react/**/*.js",
+      "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
    ],
    theme: {
       extend: {
@@ -18,8 +20,8 @@ module.exports = {
          center: true,
          padding: {
             sm: "2rem",
-            md: "5rem",
-            lg: "7rem",
+            md: "2rem",
+            lg: "2rem",
             xl: "10rem",
          },
       },
@@ -27,5 +29,5 @@ module.exports = {
    daisyui: {
       themes: ["light", "dark", "night"],
    },
-   plugins: [require("daisyui")],
+   plugins: [nextui(), require("tailwindcss-animated"), require("daisyui")],
 };

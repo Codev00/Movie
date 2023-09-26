@@ -1,7 +1,5 @@
-"use client";
 import { Metadata } from "next";
 import "../globals.css";
-import { useEffect } from "react";
 import { randomImages } from "@/utils/function";
 import Providers from "@/redux/Providers";
 export const metadata: Metadata = {
@@ -12,12 +10,6 @@ export default function RootLayout({
 }: {
    children: React.ReactNode;
 }) {
-   const images = ["1", "2"];
-   useEffect(() => {
-      randomImages(images);
-      return () => {};
-   }, []);
-
    return (
       <html lang="en">
          <Providers>

@@ -40,7 +40,7 @@ const Footer = () => {
                   <i className="fi fi-br-up"></i>
                </li>
             </ul>
-            <div className="text-base text-slate-400 text-center w-full mt-4">
+            <div className="text-base text-slate-400 text-justify w-full mt-4">
                &copy;copyright 2023 Codev dev Matrix
             </div>
          </div>

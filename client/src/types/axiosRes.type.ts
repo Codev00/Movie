@@ -1,4 +1,4 @@
-import { MediaTypeList } from "./mediaList.type";
+import { MediaTypeList } from "./media.type";
 
 export type axiosResList = {
    page: number;

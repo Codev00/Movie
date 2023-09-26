@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import Providers from "@/redux/Providers";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import "aos/dist/aos.css";
 
 const inter = Inter({ subsets: ["latin"] });
 

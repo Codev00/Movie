@@ -24,7 +24,7 @@ const Navbar = () => {
    return (
       <div
          className={`flex flex-row items-center justify-evenly h-[60px] bg-transparent fixed w-full top-0 z-50 ${
-            scroll > 100 && "!bg-black/90 "
+            scroll > 0 && "!bg-black/90 "
          }`}
       >
          <div className="logo w-60 flex h-[60px] items-center justify-end gap-2">
