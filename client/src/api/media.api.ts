@@ -1,7 +1,7 @@
 import { axiosResList } from "@/types/axiosRes.type";
 import privateClient from "./config/private.client";
 import publicClient from "./config/public.client";
-import { MediaTypeList } from "@/types/media.type";
+import { MediaTypeDetail, MediaTypeList } from "@/types/media.type";
 
 const mediaEndpoints = {
    list: ({
@@ -43,7 +43,7 @@ const mediaApi = {
    },
    detail: async ({ mediaType, mediaId }: any) => {
       try {
-         const res = await publicClient.get(
+         const res = await publicClient.get<MediaTypeDetail, MediaTypeDetail>(
             mediaEndpoints.detail({ mediaType, mediaId })
          );
          return { res };

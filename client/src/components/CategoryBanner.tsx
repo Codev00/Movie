@@ -103,7 +103,7 @@ const CategoryBanner = ({ name, data }: { name: string; data: string[] }) => {
                      spaceBetween: 10,
                   },
                   1286: {
-                     slidesPerView: 7,
+                     slidesPerView: 6,
                      spaceBetween: 10,
                   },
                }}
