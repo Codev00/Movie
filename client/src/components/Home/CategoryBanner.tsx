@@ -84,7 +84,6 @@ const CategoryBanner = ({ name, data }: { name: string; data: string[] }) => {
                spaceBetween={10}
                autoplay={{
                   delay: 2000,
-                  pauseOnMouseEnter: true,
                }}
                slidesPerView={"auto"}
                loop={true}

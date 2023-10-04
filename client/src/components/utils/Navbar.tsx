@@ -5,7 +5,7 @@ import localFont from "next/font/local";
 import Link from "next/link";
 
 const Mexon = localFont({
-   src: "../../public/fonts/Mexon.otf",
+   src: "../../../public/fonts/Mexon.otf",
    display: "swap",
 });
 const Navbar = () => {

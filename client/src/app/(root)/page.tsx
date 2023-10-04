@@ -1,6 +1,6 @@
 "use client";
-import Banner from "@/components/Banner";
-import CategoryBanner from "@/components/CategoryBanner";
+import Banner from "@/components/Home/Banner";
+import CategoryBanner from "@/components/Home/CategoryBanner";
 import Aos from "aos";
 import { useEffect } from "react";
 

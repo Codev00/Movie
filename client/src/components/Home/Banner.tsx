@@ -8,6 +8,7 @@ import "swiper/css";
 import Image from "next/image";
 import tmdbConfig from "@/api/config/tmdb.config";
 import Link from "next/link";
+import Genres from "../utils/Genres";
 const Banner = ({
    mediaType,
    mediaCategory,

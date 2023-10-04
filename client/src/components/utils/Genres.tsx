@@ -1,13 +1,19 @@
 import { genreType } from "@/types/all.type";
 import React from "react";
 
-const Genres = ({ genres }: { genres: genreType[] }) => {
+const Genres = ({
+   genres,
+   className = "",
+}: {
+   genres: genreType[];
+   className?: string;
+}) => {
    return (
-      <div className="my-3">
+      <div className={` ${className} flex gap-3 mb-2 `}>
          {genres.map((genre, index) => (
             <button
                key={index}
-               className="text-green-500 text-base border border-green-500 border-solid rounded-lg px-2 mr-2 hover:bg-green-500 hover:text-white transition-all duration-200 ease-linear"
+               className="text-green-700 text-base border-2 border-green-700 border-solid rounded-2xl px-2 py-[1px]  hover:bg-green-700 hover:text-slate-100 transition-all duration-500 ease-linear italic "
             >
                {genre.name}
             </button>

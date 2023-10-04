@@ -2,8 +2,8 @@ import "../globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Providers from "@/redux/Providers";
-import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
+import Footer from "@/components/utils/Footer";
+import Navbar from "@/components/utils/Navbar";
 import "aos/dist/aos.css";
 
 const inter = Inter({ subsets: ["latin"] });
