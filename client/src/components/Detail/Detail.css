@@ -8,3 +8,47 @@
    z-index: -1;
    background: linear-gradient(180deg, rgba(4, 21, 45, 0) 0%, #0f1729 79.17%);
 }
+
+.videoThumbnail {
+   margin-bottom: 15px;
+   position: relative;
+}
+.videoThumbnail img {
+   transition: all 0.7s ease-in-out;
+}
+.videoThumbnail svg {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   width: 50px;
+   height: 50px;
+}
+.videoThumbnail .triangle {
+   stroke-dasharray: 240;
+   stroke-dashoffset: 480;
+   stroke: white;
+   transform: translateY(0);
+   transition: all 0.7s ease-in-out;
+}
+.videoThumbnail .circle {
+   stroke: white;
+   stroke-dasharray: 650;
+   stroke-dashoffset: 1300;
+   transition: all 0.5s ease-in-out;
+}
+.videoThumbnail:hover img {
+   opacity: 0.5;
+}
+.videoThumbnail:hover .triangle {
+   cursor: pointer;
+   stroke-dashoffset: 0;
+   opacity: 1;
+   stroke: #da2f68;
+   animation: trailorPlay 0.7s ease-in-out;
+}
+.videoThumbnail:hover .circle {
+   cursor: pointer;
+   stroke-dashoffset: 0;
+   stroke: #da2f68;
+}

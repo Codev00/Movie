@@ -12,6 +12,8 @@ const tmdbEndpoint = {
       tmdbConfig.getUrl(`${mediaType}/${mediaId}/videos`),
    mediaRecommend: ({ mediaType, mediaId }) =>
       tmdbConfig.getUrl(`${mediaType}/${mediaId}/recommendations`),
+   mediaSimilar: ({ mediaType, mediaId }) =>
+      tmdbConfig.getUrl(`${mediaType}/${mediaId}/similar`),
    mediaImages: ({ mediaType, mediaId }) =>
       tmdbConfig.getUrl(`${mediaType}/${mediaId}/images`),
    mediaTrending: ({ mediaType, time }) =>

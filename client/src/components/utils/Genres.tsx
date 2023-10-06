@@ -13,7 +13,7 @@ const Genres = ({
          {genres.map((genre, index) => (
             <button
                key={index}
-               className="text-green-700 text-base border-2 border-green-700 border-solid rounded-2xl px-2 py-[1px]  hover:bg-green-700 hover:text-slate-100 transition-all duration-500 ease-linear italic "
+               className="text-green-700 text-base border-2 border-green-700 border-solid rounded-2xl px-2 py-[1px]  hover:bg-green-700 hover:text-slate-100 transition-all duration-500 ease-linear italic font-medium"
             >
                {genre.name}
             </button>

@@ -16,13 +16,15 @@ const posterPath = (imgEndpoint: string) =>
 
 const youtubePath = (videoId: string) =>
    `https://www.youtube.com/embed/${videoId}?controls=0`;
-
+const youtubeImg = (videoId: string) =>
+   `http://img.youtube.com/vi/${videoId}/sddefault.jpg`;
 const tmdbConfig = {
    mediaType,
    mediaCategory,
    backdropPath,
    posterPath,
    youtubePath,
+   youtubeImg,
 };
 
 export default tmdbConfig;

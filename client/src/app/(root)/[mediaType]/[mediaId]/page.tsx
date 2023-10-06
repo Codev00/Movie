@@ -7,6 +7,9 @@ import Header from "@/components/Detail/Header";
 import Body from "@/components/Detail/Body";
 import TopCast from "@/components/Detail/TopCast";
 import Trailers from "@/components/Detail/Trailers";
+import Images from "@/components/Detail/Image";
+import Similar from "@/components/utils/Similar";
+import Recommend from "@/components/Detail/Recommend";
 const MediaDetail = () => {
    const { mediaType, mediaId } = useParams();
    const [data, setData] = useState<MediaTypeDetail>();
@@ -14,8 +17,6 @@ const MediaDetail = () => {
    useEffect(() => {
       (async () => {
          const { res, error } = await mediaApi.detail({ mediaType, mediaId });
-         console.log(res);
-
          if (res) setData(res);
          if (error) console.log(error);
       })();
@@ -24,10 +25,15 @@ const MediaDetail = () => {
    return (
       <div className="w-screen h-auto">
          {data && (
-            <div className="w-auto h-auto">
+            <div className="w-full h-auto">
                <Header data={data} />
                <TopCast data={data.credits.cast} />
                <Trailers data={data.videos.results} />
+               <Images data={data.images.backdrops} />
+               <Similar data={data.similar.results} />
+               {data.recommend.total_results > 7 && (
+                  <Recommend data={data.recommend.results} />
+               )}
             </div>
          )}
       </div>

@@ -27,7 +27,7 @@ const Header = ({ data }: { data: MediaTypeDetail }) => {
          />
 
          <div className="z-1  w-full h-full md:h-screen container flex  justify-center items-center gap-6 flex-col md:flex-row">
-            <div className="w-full min-h-[450px] flex justify-center items-center gap-6 flex-col md:flex-row">
+            <div className="w-full min-h-[450px]  flex justify-center items-center gap-6 flex-col md:flex-row">
                <Image
                   src={tmdbConfig.posterPath(data.poster_path)}
                   alt={data.title || data.name}
@@ -70,27 +70,27 @@ const Header = ({ data }: { data: MediaTypeDetail }) => {
                   <span className="text-2xl font-medium">Overview</span>
                   <ScrollShadow
                      hideScrollBar
-                     className="w-full min-h-[100px] max-h-[150px] mb-3 md:mb-0 text-base text-justify font-normal"
+                     className="w-full min-h-[100px] max-h-[150px] md:h-[100px] mb-3 md:mb-0 text-base text-justify font-normal"
                   >
                      {data.overview}
                   </ScrollShadow>
                   <div className="flex justify-between text-lg border-b border-solid border-slate-500 pb-2 ">
                      <div className="flex flex-col  lg:flex-row lg:gap-2">
                         <span className="font-medium">Status: </span>
-                        <span className="text-slate-500 gap-2 text-base font-medium">
+                        <span className="text-slate-500 gap-2 text-base text-center font-medium">
                            {" "}
                            {data.status}
                         </span>
                      </div>
                      <div className="flex flex-col lg:flex-row lg:gap-2">
                         <span className="font-medium">Release Date: </span>
-                        <span className="text-slate-500 gap-2 text-base font-medium">
+                        <span className="text-slate-500 gap-2 text-base text-center font-medium">
                            {dayjs(data.release_date).format("MMM DD, YYYY")}
                         </span>
                      </div>
                      <div className="flex flex-col lg:flex-row lg:gap-2">
                         <span className="font-medium">Runtime: </span>
-                        <span className="text-slate-500 gap-2 text-base font-medium">
+                        <span className="text-slate-500 gap-2 text-base text-center font-medium">
                            {toTime(data.runtime)}
                         </span>
                      </div>

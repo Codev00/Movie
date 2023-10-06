@@ -20,6 +20,8 @@ const tmdbApi = {
       await axiosClient.get(
          tmdbEndpoint.mediaRecommend({ mediaType, mediaId })
       ),
+   mediaSimilar: async ({ mediaType, mediaId }) =>
+      await axiosClient.get(tmdbEndpoint.mediaSimilar({ mediaType, mediaId })),
    mediaSearch: async ({ mediaType, query, page }) =>
       await axiosClient.get(
          tmdbEndpoint.mediaSearch({ mediaType, query, page })

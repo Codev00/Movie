@@ -6,6 +6,7 @@ import {
    productionCompaniesType,
    productionCountriesType,
    recommendResultType,
+   similarType,
    spokenLanguagesType,
    videoResultType,
 } from "./all.type";
@@ -72,6 +73,12 @@ export type MediaTypeDetail = {
    recommend: {
       page: number;
       results: recommendResultType[];
+      total_pages: number;
+      total_results: number;
+   };
+   similar: {
+      page: number;
+      results: similarType[];
       total_pages: number;
       total_results: number;
    };
