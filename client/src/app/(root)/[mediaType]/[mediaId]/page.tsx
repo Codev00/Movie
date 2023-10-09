@@ -8,7 +8,7 @@ import Body from "@/components/Detail/Body";
 import TopCast from "@/components/Detail/TopCast";
 import Trailers from "@/components/Detail/Trailers";
 import Images from "@/components/Detail/Image";
-import Similar from "@/components/utils/Similar";
+import Similar from "@/components/Detail/Similar";
 import Recommend from "@/components/Detail/Recommend";
 const MediaDetail = () => {
    const { mediaType, mediaId } = useParams();
@@ -28,7 +28,9 @@ const MediaDetail = () => {
             <div className="w-full h-auto">
                <Header data={data} />
                <TopCast data={data.credits.cast} />
-               <Trailers data={data.videos.results} />
+               {data.videos.results.length > 0 && (
+                  <Trailers data={data.videos.results} />
+               )}
                <Images data={data.images.backdrops} />
                <Similar data={data.similar.results} />
                {data.recommend.total_results > 7 && (

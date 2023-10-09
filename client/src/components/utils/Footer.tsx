@@ -41,7 +41,7 @@ const Footer = () => {
                </li>
             </ul>
             <div className="text-base text-slate-400 text-justify w-full mt-4">
-               &copy;copyright 2023 Codev dev Matrix
+               &copy;Copyright 2023 Codev dev Matrix
             </div>
          </div>
       </div>

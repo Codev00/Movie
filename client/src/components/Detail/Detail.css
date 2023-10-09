@@ -27,6 +27,7 @@
 .videoThumbnail .triangle {
    stroke-dasharray: 240;
    stroke-dashoffset: 480;
+   opacity: 1;
    stroke: white;
    transform: translateY(0);
    transition: all 0.7s ease-in-out;

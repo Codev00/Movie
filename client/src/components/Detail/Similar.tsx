@@ -45,7 +45,7 @@ const Similar = ({ data }: { data: similarType[] }) => {
                            width={300}
                            height={400}
                            alt={film.title}
-                           className="rounded boder border-slate-500 boder-solid cursor-pointer hover:opacity-50 transition-all ease-in-out duration-300"
+                           className="rounded-xl border h-[176px] md:h-[250px] border-slate-500 border-solid cursor-pointer hover:opacity-50 transition-all ease-in-out duration-300"
                            onClick={() =>
                               router.push(`/${mediaType}/${film.id}`)
                            }

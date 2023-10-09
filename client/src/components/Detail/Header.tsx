@@ -74,29 +74,29 @@ const Header = ({ data }: { data: MediaTypeDetail }) => {
                   >
                      {data.overview}
                   </ScrollShadow>
-                  <div className="flex justify-between text-lg border-b border-solid border-slate-500 pb-2 ">
+                  <div className="flex justify-between text-lg pb-2 ">
                      <div className="flex flex-col  lg:flex-row lg:gap-2">
                         <span className="font-medium">Status: </span>
-                        <span className="text-slate-500 gap-2 text-base text-center font-medium">
+                        <span className="text-slate-500 gap-2 text-lg text-center font-medium">
                            {" "}
                            {data.status}
                         </span>
                      </div>
                      <div className="flex flex-col lg:flex-row lg:gap-2">
                         <span className="font-medium">Release Date: </span>
-                        <span className="text-slate-500 gap-2 text-base text-center font-medium">
+                        <span className="text-slate-500 gap-2 text-lg text-center font-medium">
                            {dayjs(data.release_date).format("MMM DD, YYYY")}
                         </span>
                      </div>
                      <div className="flex flex-col lg:flex-row lg:gap-2">
                         <span className="font-medium">Runtime: </span>
-                        <span className="text-slate-500 gap-2 text-base text-center font-medium">
+                        <span className="text-slate-500 gap-2 text-lg text-center font-medium">
                            {toTime(data.runtime)}
                         </span>
                      </div>
                   </div>
-                  <div className="text-lg border-b border-solid border-slate-500 flex gap-2 pb-2 ">
-                     <span className="font-medium ">Creator: </span>
+                  {/* <div className="text-lg border-b border-solid border-slate-500 flex gap-2 pb-2 ">
+                     <span className="font-medium ">Director: </span>
                      {data.credits.crew
                         .filter((f) => f.job === "Director")
                         .map((item, index) => (
@@ -108,7 +108,7 @@ const Header = ({ data }: { data: MediaTypeDetail }) => {
                               {","}
                            </span>
                         ))}
-                  </div>
+                  </div> */}
                </div>
             </div>
          </div>

@@ -23,6 +23,8 @@ const tmdbEndpoint = {
    personDetail: ({ personId }) => tmdbConfig.getUrl(`person/${personId}`),
    personMedias: ({ personId }) =>
       tmdbConfig.getUrl(`person/${personId}/combined_credits`),
+   mediaGenresList: ({ mediaType, with_genres }) =>
+      tmdbConfig.getUrl(`discover/${mediaType}`, with_genres),
 };
 
 export default tmdbEndpoint;

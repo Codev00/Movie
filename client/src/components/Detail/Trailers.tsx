@@ -1,7 +1,7 @@
 import tmdbConfig from "@/api/config/tmdb.config";
 import { videoResultType } from "@/types/all.type";
 import { Tooltip } from "@nextui-org/react";
-import Image from "next/image";
+import { Image } from "@nextui-org/react";
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { PlayIcon } from "../utils/PlayIcon";
@@ -39,7 +39,9 @@ const Trailers = ({ data }: { data: videoResultType[] }) => {
                               width={400}
                               height={300}
                               alt={video.name}
-                              className=" object-cover rounded-xl border-2 border-slate-300 border-solid cursor-pointer"
+                              isZoomed
+                              radius="lg"
+                              className="object-cover border-2 border-slate-700 border-solid cursor-pointer"
                            />
                            <PlayIcon />
                         </div>

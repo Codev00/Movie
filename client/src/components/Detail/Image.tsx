@@ -1,7 +1,7 @@
 import { imageType } from "@/types/all.type";
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import Image from "next/image";
+import { Image } from "@nextui-org/react";
 import tmdbConfig from "@/api/config/tmdb.config";
 
 const Images = ({ data }: { data: imageType[] }) => {
@@ -28,7 +28,11 @@ const Images = ({ data }: { data: imageType[] }) => {
                                  width={images.width}
                                  height={images.height}
                                  alt={images.file_path}
-                                 className="rounded-lg border border-slate-500 cursor-grab"
+                                 shadow="lg"
+                                 loading="eager"
+                                 isZoomed
+                                 radius="lg"
+                                 className="cursor-grab"
                               />
                            </SwiperSlide>
                         ))}
