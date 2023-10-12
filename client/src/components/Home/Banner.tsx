@@ -73,7 +73,9 @@ const Banner = ({
                               </div>
                               <div className="mt-10">
                                  <Link
-                                    href={`/${mediaType}/${item.id}`}
+                                    href={`/${mediaType}/${item?.title
+                                       .split(" ")
+                                       .join("-")}/${item.id}`}
                                     className="relative inline-block text-lg group"
                                  >
                                     <span className="relative z-10 block px-5 py-3 font-bold overflow-hidden  leading-tight text-red-500 transition-colors duration-300 ease-out border-2 border-red-500 rounded-3xl group-hover:text-white">

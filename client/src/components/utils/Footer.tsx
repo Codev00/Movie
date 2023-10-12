@@ -2,28 +2,23 @@ import React from "react";
 
 const Footer = () => {
    return (
-      <div className="h-[300px] text-white flex flex-col justify-center items-center mx-10 mt-10 md:mt-5 md:mx-[200px]">
+      <div className="h-[250px] text-white flex flex-col justify-center items-center mx-10 mt-10 md:mt-5 md:mx-[200px]">
          <div>
             <ul className="flex gap-5 items-center justify-center">
-               <li className="cursor-pointer hover:text-red-400 transition-all duration-300 ease-linear">
+               <li className="cursor-pointer hover:text-danger-500 transition-all duration-300 ease-linear">
                   Terms Of Use
                </li>
-               <li className="cursor-pointer hover:text-red-400 transition-all duration-300 ease-linear">
+               <li className="cursor-pointer hover:text-danger-500 transition-all duration-300 ease-linear">
                   Privacy Policy
                </li>
-               <li className="cursor-pointer hover:text-red-400 transition-all duration-300 ease-linear">
+               <li className="cursor-pointer hover:text-danger-500 transition-all duration-300 ease-linear">
                   About
                </li>
-               <li className="cursor-pointer hover:text-red-400 transition-all duration-300 ease-linear">
+               <li className="cursor-pointer hover:text-danger-500 transition-all duration-300 ease-linear">
                   FAQ
                </li>
             </ul>
-            <p className="text-md my-5 text-center max-w-[800px]">
-               Lorem, ipsum dolor sit amet consectetur adipisicing elit. Modi
-               earum qui exercitationem vel obcaecati reprehenderit adipisci
-               rerum maxime pariatur doloremque nam quidem ea, cum vitae
-               molestias odio optio nihil magnam.
-            </p>
+            <p className="text-md my-5 text-center max-w-[800px]"></p>
          </div>
          <div className="text-3xl">
             <ul className="flex gap-4 justify-center">

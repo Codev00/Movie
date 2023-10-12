@@ -78,6 +78,7 @@ export type recommendResultType = {
    video: boolean;
    vote_average: number;
    vote_count: number;
+   name: string;
 };
 
 export type similarType = {
@@ -95,6 +96,7 @@ export type similarType = {
    video: boolean;
    vote_average: number;
    vote_count: number;
+   name: string;
 };
 
 export type imageType = {

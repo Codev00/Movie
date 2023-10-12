@@ -47,7 +47,13 @@ const Similar = ({ data }: { data: similarType[] }) => {
                            alt={film.title}
                            className="rounded-xl border h-[176px] md:h-[250px] border-slate-500 border-solid cursor-pointer hover:opacity-50 transition-all ease-in-out duration-300"
                            onClick={() =>
-                              router.push(`/${mediaType}/${film.id}`)
+                              router.push(
+                                 `/${mediaType}/${
+                                    film.title
+                                       ? film?.title.split(" ").join("-")
+                                       : film?.name.split(" ").join("-")
+                                 }/${film.id}`
+                              )
                            }
                         />
                      </SwiperSlide>

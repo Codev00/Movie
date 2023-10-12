@@ -28,6 +28,16 @@ const mediaEndpoints = {
       `media/${mediaType}/trending/${time}`,
    toprate: ({ mediaType, page }: { mediaType: string; page: number }) =>
       `media/${mediaType}/top-rate/list?page=${page}`,
+   mediaList: ({
+      mediaType,
+      with_genres,
+      page,
+   }: {
+      mediaType: string | string[];
+      with_genres?: number;
+      page?: number;
+   }) =>
+      `media/${mediaType}/search/list?page=${page}&with_genres=${with_genres}`,
 };
 
 const mediaApi = {
@@ -76,6 +86,38 @@ const mediaApi = {
             })
          );
          return { res };
+      } catch (error) {
+         return { error };
+      }
+   },
+   mediaList: async ({
+      mediaType,
+      with_genres,
+      page,
+   }: {
+      mediaType: string | string[];
+      with_genres?: number;
+      page?: number;
+   }) => {
+      try {
+         if (with_genres) {
+            const res = await publicClient.get<axiosResList, axiosResList>(
+               mediaEndpoints.mediaList({
+                  mediaType,
+                  with_genres,
+                  page: page,
+               })
+            );
+            return { res };
+         } else {
+            const res = await publicClient.get<axiosResList, axiosResList>(
+               mediaEndpoints.mediaList({
+                  mediaType,
+                  page: page,
+               })
+            );
+            return { res };
+         }
       } catch (error) {
          return { error };
       }

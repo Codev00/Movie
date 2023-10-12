@@ -52,6 +52,7 @@ const CategoryBanner = ({ name, data }: { name: string; data: string[] }) => {
          data-aos-duration="1000"
          data-aos-delay="150"
          data-aos-offset="150"
+         key={mediaType}
       >
          <div className="flex flex-row w-full justify-between mb-5 px-2 md:px-10">
             <div className="text-2xl text-white font-bold">{name}</div>
@@ -80,11 +81,7 @@ const CategoryBanner = ({ name, data }: { name: string; data: string[] }) => {
          </div>
          <div className="mx-2 md:mx-10 rounded-2xl">
             <Swiper
-               modules={[Autoplay]}
                spaceBetween={10}
-               autoplay={{
-                  delay: 2000,
-               }}
                slidesPerView={"auto"}
                loop={true}
                grid={{ rows: 1 }}
@@ -110,21 +107,27 @@ const CategoryBanner = ({ name, data }: { name: string; data: string[] }) => {
                {trending ? (
                   trending.map((item, i) => (
                      <SwiperSlide className="" key={i}>
-                        <Link href={`/${mediaType}/${item.id}`}>
+                        <Link
+                           href={`/${mediaType}/${
+                              item.title
+                                 ? item?.title.split(" ").join("-")
+                                 : item?.name.split(" ").join("-")
+                           }/${item.id}`}
+                        >
                            <div className="relative cursor-pointer items-stretch">
                               <Image
                                  src={tmdbConfig.posterPath(item.poster_path)}
                                  width={200}
                                  height={300}
                                  alt=""
-                                 className="rounded-xl "
+                                 className="rounded-xl hover:opacity-50"
                               />
                               <CircleRating
                                  rating={Number(item.vote_average.toFixed(1))}
                               />
                            </div>
                            <div className="mt-8">
-                              <span className="block whitespace-nowrap overflow-hidden text-ellipsis mb-1 w-[100px] md:w-[120px] lg:w-[130px] xl:w-[150px] font-semibold cursor-pointer">
+                              <span className="block whitespace-nowrap overflow-hidden text-ellipsis mb-1 w-[120px] md:w-[120px] lg:w-[130px] xl:w-[150px] font-semibold cursor-pointer">
                                  {item.title || item?.name}
                               </span>
                               <span className="text-gray-600 font-semibold">

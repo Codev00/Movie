@@ -108,10 +108,12 @@ const getTrending = async (req, res) => {
 const getMediaGenresList = async (req, res) => {
    try {
       console.log("Get MediaGenres");
-      const { mediaType, with_genres } = req.params;
+      const { mediaType } = req.params;
+      const { with_genres, page } = req.query;
       const response = await tmdbApi.mediaGenresList({
          mediaType,
          with_genres,
+         page,
       });
       responseHandler.ok(res, response);
    } catch (error) {

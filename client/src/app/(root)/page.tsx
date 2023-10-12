@@ -27,7 +27,7 @@ export default function Home() {
       });
    }, []);
    return (
-      <main className=" flex flex-col ">
+      <main className=" flex flex-col pt-[60px] md:pt-[0px]">
          <Banner mediaType="movie" mediaCategory="popular" />
          <CategoryBanner name="Trending" data={["day", "week"]} />
          <CategoryBanner name="Top Rate" data={["movie", "tv"]} />

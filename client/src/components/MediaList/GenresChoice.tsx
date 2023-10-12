@@ -1,10 +1,21 @@
 import genresApi from "@/api/genres.api";
-import { genreType } from "@/types/all.type";
 import { Chip, Select, SelectItem } from "@nextui-org/react";
-import React, { useEffect, useState } from "react";
 import { PetIcon } from "../utils/icon/PetIcon";
+import { useEffect, useState } from "react";
+import { genreType } from "@/types/all.type";
 
-const GenresChoice = ({ mediaType }: { mediaType: string | string[] }) => {
+interface GenreType {
+   name: string;
+   id: number;
+}
+
+const GenresChoice = ({
+   mediaType,
+   setGenre,
+}: {
+   mediaType: string | string[];
+   setGenre?: (genre: GenreType) => void;
+}) => {
    const [genres, setGenres] = useState<genreType[]>([]);
    useEffect(() => {
       (async () => {
@@ -13,8 +24,12 @@ const GenresChoice = ({ mediaType }: { mediaType: string | string[] }) => {
          if (error) console.log(error);
       })();
    }, [mediaType]);
+   const SelectGenre = (e: any) => {
+      const data = genres.filter((item) => item.id == e.target.value);
+      setGenre?.(data[0]);
+   };
    return (
-      <div className="genres w-full  min-h-[80px] bg-slate-800 rounded-xl flex flex-wrap items-center p-5 ">
+      <div className="genres w-full  min-h-[80px]  rounded-xl flex flex-wrap items-center p-5 ">
          <Select
             items={genres}
             label="Genres:"
@@ -22,9 +37,13 @@ const GenresChoice = ({ mediaType }: { mediaType: string | string[] }) => {
             disableAnimation={false}
             labelPlacement="outside-left"
             placeholder="Select Genres"
-            className="max-w-[250px] flex items-center"
-            color="secondary"
-            radius="full"
+            className="md:min-w-[250px] max-w-xs flex items-center"
+            color="danger"
+            radius="md"
+            onChange={SelectGenre}
+            scrollShadowProps={{
+               isEnabled: false,
+            }}
             variant="bordered"
             selectorIcon={<PetIcon />}
             renderValue={(items) => {
@@ -40,7 +59,7 @@ const GenresChoice = ({ mediaType }: { mediaType: string | string[] }) => {
             }}
          >
             {(genre) => (
-               <SelectItem key={genre.id} color="secondary" value={genre.id}>
+               <SelectItem key={genre.id} color="danger" value={genre.id}>
                   {genre.name}
                </SelectItem>
             )}

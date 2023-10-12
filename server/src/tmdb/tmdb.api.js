@@ -34,9 +34,9 @@ const tmdbApi = {
 
    personMedias: async ({ personId }) =>
       await axiosClient.get(tmdbEndpoint.personMedias({ personId })),
-   mediaGenresList: async ({ mediaType, with_genres }) =>
+   mediaGenresList: async ({ mediaType, with_genres, page }) =>
       await axiosClient.get(
-         tmdbEndpoint.mediaGenresList({ mediaType, with_genres })
+         tmdbEndpoint.mediaGenresList({ mediaType, with_genres, page })
       ),
 };
 

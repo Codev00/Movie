@@ -13,6 +13,6 @@ router.get("/:mediaType/list/:mediaCategory", mediaController.getList);
 
 router.get("/:mediaType/trending/:time", mediaController.getTrending);
 
-router.get("/:mediaType/:with_genres/list", mediaController.getMediaGenresList);
+router.get("/:mediaType/search/list", mediaController.getMediaGenresList);
 
 export default router;

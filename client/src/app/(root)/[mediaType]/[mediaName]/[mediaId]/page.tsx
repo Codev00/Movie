@@ -32,8 +32,10 @@ const MediaDetail = () => {
                   <Trailers data={data.videos.results} />
                )}
                <Images data={data.images.backdrops} />
-               <Similar data={data.similar.results} />
-               {data.recommend.total_results > 7 && (
+               {data.similar.total_results > 6 && (
+                  <Similar data={data.similar.results} />
+               )}
+               {data.recommend.total_results > 6 && (
                   <Recommend data={data.recommend.results} />
                )}
             </div>

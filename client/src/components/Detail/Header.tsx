@@ -56,13 +56,7 @@ const Header = ({ data }: { data: MediaTypeDetail }) => {
                         maxValue={10}
                         value={Number(data.vote_average.toFixed(1))}
                         valueLabel={Number(data.vote_average.toFixed(1))}
-                        color={
-                           Number(data.vote_average.toFixed(1)) < 5
-                              ? "danger"
-                              : Number(data.vote_average.toFixed(1)) < 7
-                              ? "warning"
-                              : "success"
-                        }
+                        color={"danger"}
                         showValueLabel={true}
                         strokeWidth={4}
                      />

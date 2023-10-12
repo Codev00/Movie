@@ -1,19 +1,31 @@
 "use client";
-import genresApi from "@/api/genres.api";
+
 import GenresChoice from "@/components/MediaList/GenresChoice";
-import { genreType } from "@/types/all.type";
-import { Chip, Select, SelectItem } from "@nextui-org/react";
+import ListMedia from "@/components/MediaList/ListMedia";
+import Breadcrumbs from "@/components/utils/Breadcrumbs";
 import { useParams } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+
+interface GenreType {
+   name: string;
+   id: number;
+}
 
 const MediaList = () => {
    const { mediaType } = useParams();
 
+   const [genre, setGenre] = useState<GenreType>();
+   useEffect(() => {
+      console.log(genre);
+   }, [genre]);
    return (
-      <div className="container pt-[60px]">
+      <div className="container pt-[70px]">
          <div className="flex flex-col gap-1">
-            <GenresChoice mediaType={mediaType} />
-            <div>List movie</div>
+            <GenresChoice
+               mediaType={mediaType}
+               setGenre={(value) => setGenre(value)}
+            />
+            <ListMedia mediaType={mediaType} with_genres={genre?.id} />
             <div>Suggest</div>
          </div>
       </div>
