@@ -21,11 +21,12 @@ import { AcmeLogo } from "./icon/AcmeLogo";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 import { setActive } from "@/redux/global.slice";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 const NavbarTop = () => {
    const [scroll, setScroll] = useState(0);
    const { mediaType } = useParams();
    const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+   const router = useRouter();
    const menuItems = [
       { name: "Home", link: "/" },
       { name: "Movie", link: "/movie" },
@@ -102,13 +103,15 @@ const NavbarTop = () => {
                <NavbarItem
                   key={index}
                   isActive={isActive === item.name ? true : false}
+                  className="cursor-pointer"
                >
                   <Link
                      color={isActive === item.name ? "danger" : "foreground"}
                      aria-current="page"
-                     href={item.link}
-                     as={NextLink}
-                     onClick={() => dispatch(setActive(item.name))}
+                     onClick={() => {
+                        dispatch(setActive(item.name));
+                        router.push(item.link);
+                     }}
                      size="lg"
                   >
                      {item.name}
