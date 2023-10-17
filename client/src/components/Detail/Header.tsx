@@ -9,7 +9,11 @@ import Genres from "../utils/Genres";
 import dayjs from "dayjs";
 import { CircularProgress } from "@nextui-org/react";
 import { toTime } from "@/more/function";
+import { useParams, useRouter } from "next/navigation";
+import { PlayIcon } from "../utils/PlayIcon";
 const Header = ({ data }: { data: MediaTypeDetail }) => {
+   const { mediaType, mediaName } = useParams();
+   const router = useRouter();
    return (
       <div className="w-auto h-auto min-h-screen relative back z-0">
          <Image
@@ -45,21 +49,36 @@ const Header = ({ data }: { data: MediaTypeDetail }) => {
                         {data.tagline || "No subtitle"}
                      </span>
                   </div>
-                  <Genres genres={data.genres} />
-                  <div>
-                     <CircularProgress
-                        classNames={{
-                           svg: "w-20 h-20 drop-shadow-md",
-                           track: "stroke-white/10",
-                           value: "text-lg font-semibold text-white",
-                        }}
-                        maxValue={10}
-                        value={Number(data.vote_average.toFixed(1))}
-                        valueLabel={Number(data.vote_average.toFixed(1))}
-                        color={"danger"}
-                        showValueLabel={true}
-                        strokeWidth={4}
-                     />
+                  <Genres mediaType={mediaType} genres={data.genres} />
+                  <div className="flex items-center h-16 gap-5">
+                     <div>
+                        <CircularProgress
+                           classNames={{
+                              svg: "w-16 h-16 drop-shadow-md",
+                              track: "stroke-white/10",
+                              value: "text-lg font-semibold text-white",
+                           }}
+                           maxValue={10}
+                           value={Number(data.vote_average.toFixed(1))}
+                           valueLabel={Number(data.vote_average.toFixed(1))}
+                           color={"danger"}
+                           showValueLabel={true}
+                           strokeWidth={4}
+                        />
+                     </div>
+                     <div
+                        className="playbtn relative min-w-16 gap-2 flex flex-row items-center hover:text-[#da2f68] cursor-pointer"
+                        onClick={() =>
+                           router.push(
+                              `/${mediaType}/${mediaName}/${data.id}/play`
+                           )
+                        }
+                     >
+                        <PlayIcon />
+                        <span className="text-lg font-light transition-all duration-300 ease-in-out">
+                           Watch Trailer
+                        </span>
+                     </div>
                   </div>
                   <span className="text-2xl font-medium">Overview</span>
                   <ScrollShadow

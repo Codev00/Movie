@@ -53,3 +53,43 @@
    stroke-dashoffset: 0;
    stroke: #da2f68;
 }
+/* Play Btn*/
+.playbtn {
+   position: relative;
+}
+.playbtn img {
+   transition: all 0.7s ease-in-out;
+}
+.playbtn svg {
+   width: 50px;
+   height: 50px;
+}
+.playbtn .triangle {
+   stroke-dasharray: 240;
+   stroke-dashoffset: 480;
+   opacity: 1;
+   stroke: white;
+   transform: translateY(0);
+   transition: all 0.7s ease-in-out;
+}
+.playbtn .circle {
+   stroke: white;
+   stroke-dasharray: 650;
+   stroke-dashoffset: 1300;
+   transition: all 0.5s ease-in-out;
+}
+.playbtn:hover img {
+   opacity: 0.5;
+}
+.playbtn:hover .triangle {
+   cursor: pointer;
+   stroke-dashoffset: 0;
+   opacity: 1;
+   stroke: #da2f68;
+   animation: trailorPlay 0.7s ease-in-out;
+}
+.playbtn:hover .circle {
+   cursor: pointer;
+   stroke-dashoffset: 0;
+   stroke: #da2f68;
+}

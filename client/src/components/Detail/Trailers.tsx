@@ -6,6 +6,8 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { PlayIcon } from "../utils/PlayIcon";
 import "./Detail.css";
+import "swiper/css";
+import "swiper/css/navigation";
 
 const Trailers = ({ data }: { data: videoResultType[] }) => {
    return (

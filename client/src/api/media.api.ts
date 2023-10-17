@@ -24,8 +24,13 @@ const mediaEndpoints = {
       query: string;
       page: number;
    }) => `media/${mediaType}/search?query=${query}&page=${page}`,
-   trending: ({ mediaType, time }: { mediaType: string; time: string }) =>
-      `media/${mediaType}/trending/${time}`,
+   trending: ({
+      mediaType,
+      time,
+   }: {
+      mediaType: string | string[];
+      time: string;
+   }) => `media/${mediaType}/trending/${time}`,
    toprate: ({ mediaType, page }: { mediaType: string; page: number }) =>
       `media/${mediaType}/top-rate/list?page=${page}`,
    mediaList: ({
@@ -75,7 +80,7 @@ const mediaApi = {
       mediaType,
       time,
    }: {
-      mediaType: string;
+      mediaType: string | string[];
       time: string;
    }) => {
       try {

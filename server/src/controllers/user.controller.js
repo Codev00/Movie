@@ -6,7 +6,7 @@ const signup = async (req, res) => {
    try {
       const { username, password, displayName } = req.body;
 
-      const checkUser = await userModel.findOne({ username });
+      const checkUser = await userModel.findOne({ username: username });
 
       if (checkUser) {
          return responseHandler.badrequest(res, "User already exists");
@@ -15,6 +15,7 @@ const signup = async (req, res) => {
       user.displayName = displayName;
       user.username = username;
       user.setPassword(password);
+      console.log("setUser");
 
       await user.save();
       const token = jsonwebtoken.sign(
@@ -38,7 +39,7 @@ const signin = async (req, res) => {
 
       const user = await userModel
          .findOne({ username })
-         .select("username password salt display name");
+         .select("username password display name");
 
       if (!user) {
          return responseHandler.badrequest(res, "User not exist");
@@ -54,7 +55,7 @@ const signin = async (req, res) => {
       );
 
       user.password = undefined;
-      user.salt = undefined;
+      // user.salt = undefined;
 
       responseHandler.created(res, {
          token,

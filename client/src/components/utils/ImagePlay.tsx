@@ -10,12 +10,14 @@ const ImagePlay = ({
    height,
    width,
    className,
+   onClick,
 }: {
    imgSrc: string;
    alt: string;
    width: number;
    height: number;
    className?: string;
+   onClick?: () => void;
 }) => {
    return (
       <div className="relative videoThumbnail ">
@@ -25,6 +27,7 @@ const ImagePlay = ({
             height={height}
             alt={alt}
             className={className}
+            onClick={onClick}
          />
          <PlayIcon />
       </div>

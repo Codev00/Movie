@@ -15,12 +15,12 @@
    cursor: pointer;
 }
 .videoThumbnail .triangle {
+   opacity: 0;
    stroke-dasharray: 240;
    stroke-dashoffset: 480;
-   opacity: 0;
    stroke: white;
    transform: translateY(0);
-   transition: all 0.7s ease-in-out;
+   transition: all 0.5s ease-in-out;
 }
 .videoThumbnail .circle {
    opacity: 0;

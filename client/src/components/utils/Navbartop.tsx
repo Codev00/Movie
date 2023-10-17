@@ -11,6 +11,11 @@ import {
    NavbarMenu,
    NavbarMenuItem,
    NavbarMenuToggle,
+   Dropdown,
+   DropdownTrigger,
+   Avatar,
+   DropdownMenu,
+   DropdownItem,
 } from "@nextui-org/react";
 import { AcmeLogo } from "./icon/AcmeLogo";
 import { useDispatch, useSelector } from "react-redux";
@@ -59,6 +64,8 @@ const NavbarTop = () => {
                "flex",
                "relative",
                "items-center",
+               "text-2xl",
+               "data-[active=true]:font-semibold",
                "data-[active=true]:after:content-['']",
                "data-[active=true]:after:absolute",
                "data-[active=true]:after:bottom-0",
@@ -79,9 +86,14 @@ const NavbarTop = () => {
                aria-label={isMenuOpen ? "Close menu" : "Open menu"}
                className="sm:hidden"
             />
-            <NavbarBrand>
+            <NavbarBrand className="text-white text-2xl font ">
                <AcmeLogo />
-               <p className="font-bold text-inherit">ACME</p>
+               <p className="font-bold text-inherit peer cursor-pointer">
+                  MA{" "}
+                  <span className="bg-danger px-2 rounded-md peer-hover:line-through">
+                     TRIX
+                  </span>
+               </p>
             </NavbarBrand>
          </NavbarContent>
 
@@ -103,18 +115,6 @@ const NavbarTop = () => {
                   </Link>
                </NavbarItem>
             ))}
-         </NavbarContent>
-         <NavbarContent justify="end">
-            <NavbarItem className="hidden lg:flex">
-               <Link href="#" color="danger" as={NextLink}>
-                  Login
-               </Link>
-            </NavbarItem>
-            <NavbarItem>
-               <Button as={Link} color="danger" href="#" variant="flat">
-                  Sign Up
-               </Button>
-            </NavbarItem>
          </NavbarContent>
          <NavbarMenu>
             {menuItems.map((item, index) => (
@@ -138,6 +138,31 @@ const NavbarTop = () => {
                </NavbarMenuItem>
             ))}
          </NavbarMenu>
+         <NavbarContent as="div" justify="end">
+            <Dropdown showArrow placement="bottom">
+               <DropdownTrigger>
+                  <Avatar
+                     isBordered
+                     as="button"
+                     className="transition-transform object-cover"
+                     color="danger"
+                     size="md"
+                     src="/images/avatar.png"
+                  />
+               </DropdownTrigger>
+               <DropdownMenu aria-label="Profile Actions" variant="flat">
+                  <DropdownItem key="profile" className="h-14 gap-2">
+                     <p className="font-bold">Name</p>
+                     <p className="font-normal">username</p>
+                  </DropdownItem>
+                  <DropdownItem key="favorite">Favorites</DropdownItem>
+                  <DropdownItem key="setting">Setting</DropdownItem>
+                  <DropdownItem key="logout" color="danger">
+                     Log Out
+                  </DropdownItem>
+               </DropdownMenu>
+            </Dropdown>
+         </NavbarContent>
       </Navbar>
    );
 };

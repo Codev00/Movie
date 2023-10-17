@@ -3,6 +3,7 @@ import { Chip, Select, SelectItem } from "@nextui-org/react";
 import { PetIcon } from "../utils/icon/PetIcon";
 import { useEffect, useState } from "react";
 import { genreType } from "@/types/all.type";
+import { useRouter, useSearchParams } from "next/navigation";
 
 interface GenreType {
    name: string;
@@ -17,6 +18,9 @@ const GenresChoice = ({
    setGenre?: (genre: GenreType) => void;
 }) => {
    const [genres, setGenres] = useState<genreType[]>([]);
+   const searchParams = useSearchParams();
+   const [selectKey, setSelectKey] = useState("");
+   const router = useRouter();
    useEffect(() => {
       (async () => {
          const { res, error } = await genresApi.getList({ mediaType });
@@ -24,9 +28,11 @@ const GenresChoice = ({
          if (error) console.log(error);
       })();
    }, [mediaType]);
+
    const SelectGenre = (e: any) => {
       const data = genres.filter((item) => item.id == e.target.value);
       setGenre?.(data[0]);
+      router.push(`/${mediaType}?genre=${e.target.value}`);
    };
    return (
       <div className="genres w-full  min-h-[80px]  rounded-xl flex flex-wrap items-center p-5 ">
@@ -34,6 +40,7 @@ const GenresChoice = ({
             items={genres}
             label="Genres:"
             size="lg"
+            selectedKeys={selectKey}
             disableAnimation={false}
             labelPlacement="outside-left"
             placeholder="Select Genres"

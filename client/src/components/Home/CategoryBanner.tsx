@@ -1,11 +1,10 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import { MediaTypeList } from "@/types/media.type";
-import tmdbConfig, { mediaType } from "@/api/config/tmdb.config";
+import tmdbConfig from "@/api/config/tmdb.config";
 import mediaApi from "@/api/media.api";
 import Image from "next/image";
 import dayjs from "dayjs";
@@ -28,7 +27,7 @@ const CategoryBanner = ({ name, data }: { name: string; data: string[] }) => {
       };
       const getTopRate = async () => {
          const { res, error } = await mediaApi.getList({
-            mediaType,
+            mediaType: mediaType,
             mediaCategory: "top_rated",
             page: 1,
          });
@@ -59,9 +58,7 @@ const CategoryBanner = ({ name, data }: { name: string; data: string[] }) => {
             <div className=" bg-white rounded-3xl p-[2px] flex gap-1 transition-all">
                <button
                   className={`p-1 w-20 rounded-3xl ${
-                     time === data[0]
-                        ? "bg-orange-600 text-white"
-                        : "text-black"
+                     time === data[0] ? "bg-danger text-white" : "text-black"
                   }  font-bold transition-all duration-300 ease-linear`}
                   onClick={() => changeQuery(data[0])}
                >
@@ -69,9 +66,7 @@ const CategoryBanner = ({ name, data }: { name: string; data: string[] }) => {
                </button>
                <button
                   className={`p-1 w-20 rounded-3xl ${
-                     time === data[1]
-                        ? "bg-orange-600 text-white"
-                        : "text-black"
+                     time === data[1] ? "bg-danger text-white" : "text-black"
                   }  font-bold transition-all duration-300 ease-linear`}
                   onClick={() => changeQuery(data[1])}
                >

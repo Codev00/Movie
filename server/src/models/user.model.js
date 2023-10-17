@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import modelOptions from "./model.options.js";
 import crypto from "crypto";
+import bcrypt from "bcrypt";
 
 const userSchema = new mongoose.Schema(
    {
@@ -18,27 +19,32 @@ const userSchema = new mongoose.Schema(
          required: true,
          select: false,
       },
-      salt: {
-         type: String,
-         required: true,
-         select: false,
-      },
    },
    modelOptions
 );
 
+// userSchema.methods.setPassword = (password) => {
+//    this.salt = crypto.randomBytes(16).toString("hex");
+//    this.password = crypto
+//       .pbkdf2Sync(password, this.salt, 10000, 64, "sha512")
+//       .toString("hex");
+// };
+//
+// userSchema.methods.validPassword = (password) => {
+//    const hash = crypto
+//       .pbkdf2Sync(password, this.salt, 10000, 64, "sha512")
+//       .toString("hex");
+//    return hash === this.password;
+// };
+
 userSchema.methods.setPassword = (password) => {
-   this.salt = crypto.randomBytes(16).toString("hex");
-   this.password = crypto
-      .pbkdf2Sync(password, this.salt, 10000, 64, "sha512")
-      .toString("hex");
+   const salt = bcrypt.genSaltSync(saltRounds);
+   this.password = bcrypt.hashSync(password, salt);
+   console.log(this.password);
 };
 
 userSchema.methods.validPassword = (password) => {
-   const hash = crypto
-      .pbkdf2Sync(password, this.salt, 10000, 64, "sha512")
-      .toString("hex");
-   return hash === this.password;
+   return bcrypt.compareSync(password, this.password);
 };
 
 const userModel = mongoose.model("User", userSchema);

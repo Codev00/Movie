@@ -4,6 +4,9 @@ import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import ImagePlay from "../utils/ImagePlay";
 
 const Recommend = ({ data }: { data: recommendResultType[] }) => {
    const { mediaType } = useParams();
@@ -40,8 +43,8 @@ const Recommend = ({ data }: { data: recommendResultType[] }) => {
                >
                   {data.map((film, index) => (
                      <SwiperSlide className="w-full" key={index}>
-                        <Image
-                           src={tmdbConfig.posterPath(film.poster_path)}
+                        <ImagePlay
+                           imgSrc={film.poster_path}
                            width={300}
                            height={400}
                            alt={film.title}

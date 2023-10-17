@@ -1,7 +1,7 @@
 "use client";
-
 import GenresChoice from "@/components/MediaList/GenresChoice";
 import ListMedia from "@/components/MediaList/ListMedia";
+import Trending from "@/components/MediaList/Trending";
 import Breadcrumbs from "@/components/utils/Breadcrumbs";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -15,9 +15,6 @@ const MediaList = () => {
    const { mediaType } = useParams();
 
    const [genre, setGenre] = useState<GenreType>();
-   useEffect(() => {
-      console.log(genre);
-   }, [genre]);
    return (
       <div className="container pt-[70px]">
          <div className="flex flex-col gap-1">
@@ -26,7 +23,7 @@ const MediaList = () => {
                setGenre={(value) => setGenre(value)}
             />
             <ListMedia mediaType={mediaType} with_genres={genre?.id} />
-            <div>Suggest</div>
+            <Trending mediaType={mediaType} />
          </div>
       </div>
    );

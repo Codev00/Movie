@@ -3,6 +3,8 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Image } from "@nextui-org/react";
 import tmdbConfig from "@/api/config/tmdb.config";
+import "swiper/css";
+import "swiper/css/navigation";
 
 const Images = ({ data }: { data: imageType[] }) => {
    return (

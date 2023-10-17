@@ -1,6 +1,6 @@
 "use client";
 import mediaApi from "@/api/media.api";
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { MediaTypeDetail } from "@/types/media.type";
 import Header from "@/components/Detail/Header";
@@ -10,6 +10,7 @@ import Trailers from "@/components/Detail/Trailers";
 import Images from "@/components/Detail/Image";
 import Similar from "@/components/Detail/Similar";
 import Recommend from "@/components/Detail/Recommend";
+import Loading from "@/components/utils/Loading";
 const MediaDetail = () => {
    const { mediaType, mediaId } = useParams();
    const [data, setData] = useState<MediaTypeDetail>();
@@ -23,9 +24,9 @@ const MediaDetail = () => {
    }, []);
 
    return (
-      <div className="w-screen h-auto">
+      <Suspense fallback={<Loading />}>
          {data && (
-            <div className="w-full h-auto">
+            <div className=" flex flex-col">
                <Header data={data} />
                <TopCast data={data.credits.cast} />
                {data.videos.results.length > 0 && (
@@ -40,7 +41,7 @@ const MediaDetail = () => {
                )}
             </div>
          )}
-      </div>
+      </Suspense>
    );
 };
 

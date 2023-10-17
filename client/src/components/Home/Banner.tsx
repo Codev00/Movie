@@ -78,15 +78,15 @@ const Banner = ({
                                        .join("-")}/${item.id}`}
                                     className="relative inline-block text-lg group"
                                  >
-                                    <span className="relative z-10 block px-5 py-3 font-bold overflow-hidden  leading-tight text-red-500 transition-colors duration-300 ease-out border-2 border-red-500 rounded-3xl group-hover:text-white">
+                                    <span className="relative z-10 block px-5 py-3 font-bold overflow-hidden  leading-tight text-danger transition-colors duration-300 ease-out border-2 border-danger rounded-3xl group-hover:text-white">
                                        <span className="absolute inset-0 w-full h-full px-5 py-3 rounded-3xl bg-gray-50"></span>
-                                       <span className="absolute left-0 w-48 h-48 -ml-2 transition-all duration-300 origin-top-right -rotate-90 -translate-x-full translate-y-12 bg-red-600 group-hover:-rotate-180 ease"></span>
+                                       <span className="absolute left-0 w-48 h-48 -ml-2 transition-all duration-300 origin-top-right -rotate-90 -translate-x-full translate-y-12 bg-danger group-hover:-rotate-180 ease"></span>
                                        <span className="relative">
                                           Watch Now
                                        </span>
                                     </span>
                                     <span
-                                       className="absolute bottom-0 right-0 w-full h-12 -mb-1 -mr-1 transition-all duration-200 ease-linear bg-red-600 rounded-3xl group-hover:mb-0 group-hover:mr-0"
+                                       className="absolute bottom-0 right-0 w-full h-12 -mb-1 -mr-1 transition-all duration-200 ease-linear bg-danger rounded-3xl group-hover:mb-0 group-hover:mr-0 group-hover:shadow-lg group-hover:transition-shadow group-hover:shadow-danger-600"
                                        data-rounded="rounded-lg"
                                     ></span>
                                  </Link>

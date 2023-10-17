@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 @import "~@flaticon/flaticon-uicons/css/all/all";
+@import "swiper/css";
+@import "swiper/css/navigation";
 
 :root {
    --foreground-rgb: 0, 0, 0;
