@@ -121,6 +121,18 @@ const getMediaGenresList = async (req, res) => {
    }
 };
 
+const getUpcoming = async (req, res) => {
+   try {
+      console.log("UpComing");
+      const response = await tmdbApi.upcoming({
+         page: 1,
+      });
+      responseHandler.ok(res, response);
+   } catch (error) {
+      responseHandler.error(res);
+   }
+};
+
 export default {
    getList,
    getGenres,
@@ -128,4 +140,5 @@ export default {
    getDetail,
    getTrending,
    getMediaGenresList,
+   getUpcoming,
 };

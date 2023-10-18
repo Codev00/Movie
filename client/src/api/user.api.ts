@@ -54,6 +54,7 @@ const userApi = {
    getInfo: async () => {
       try {
          const res = await privateClient.get(userEndpoints.getInfo);
+          return { res };
       } catch (error) {
          return { error };
       }

@@ -43,6 +43,7 @@ const mediaEndpoints = {
       page?: number;
    }) =>
       `media/${mediaType}/search/list?page=${page}&with_genres=${with_genres}`,
+   upcoming: () => `media/movie/upcoming`,
 };
 
 const mediaApi = {
@@ -123,6 +124,16 @@ const mediaApi = {
             );
             return { res };
          }
+      } catch (error) {
+         return { error };
+      }
+   },
+   upcoming: async () => {
+      try {
+         const res = await publicClient.get<axiosResList, axiosResList>(
+            mediaEndpoints.upcoming()
+         );
+         return { res };
       } catch (error) {
          return { error };
       }

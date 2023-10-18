@@ -38,6 +38,8 @@ const tmdbApi = {
       await axiosClient.get(
          tmdbEndpoint.mediaGenresList({ mediaType, with_genres, page })
       ),
+   upcoming: async ({ page }) =>
+      await axiosClient.get(tmdbEndpoint.upcoming({ page })),
 };
 
 export default tmdbApi;

@@ -1,6 +1,7 @@
 "use client";
 import Banner from "@/components/Home/Banner";
 import CategoryBanner from "@/components/Home/CategoryBanner";
+import UpComing from "@/components/Home/UpComing";
 import Loading from "@/components/utils/Loading";
 import Aos from "aos";
 import { Suspense, useEffect } from "react";
@@ -33,6 +34,7 @@ export default function Home() {
             <Banner mediaType="movie" mediaCategory="popular" />
             <CategoryBanner name="Trending" data={["day", "week"]} />
             <CategoryBanner name="Top Rate" data={["movie", "tv"]} />
+            <UpComing />
          </main>
       </Suspense>
    );

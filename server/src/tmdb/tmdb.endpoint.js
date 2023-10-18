@@ -25,6 +25,7 @@ const tmdbEndpoint = {
       tmdbConfig.getUrl(`person/${personId}/combined_credits`),
    mediaGenresList: ({ mediaType, with_genres, page }) =>
       tmdbConfig.getUrl(`discover/${mediaType}`, { with_genres, page }),
+   upcoming: ({ page }) => tmdbConfig.getUrl(`movie/upcoming`, page),
 };
 
 export default tmdbEndpoint;

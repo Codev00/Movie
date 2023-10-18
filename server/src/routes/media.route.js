@@ -15,4 +15,6 @@ router.get("/:mediaType/trending/:time", mediaController.getTrending);
 
 router.get("/:mediaType/search/list", mediaController.getMediaGenresList);
 
+router.get("/movie/upcoming", mediaController.getUpcoming);
+
 export default router;
