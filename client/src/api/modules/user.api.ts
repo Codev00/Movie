@@ -1,5 +1,10 @@
-import privateClient from "./config/private.client";
-import publicClient from "./config/public.client";
+import privateClient from "../config/private.client";
+import publicClient from "../config/public.client";
+
+interface ErrorType {
+   status: number;
+   message: string;
+}
 
 const userEndpoints = {
    signin: "user/signin",
@@ -54,7 +59,7 @@ const userApi = {
    getInfo: async () => {
       try {
          const res = await privateClient.get(userEndpoints.getInfo);
-          return { res };
+         return { res };
       } catch (error) {
          return { error };
       }

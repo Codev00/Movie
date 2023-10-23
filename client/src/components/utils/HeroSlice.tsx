@@ -1,5 +1,5 @@
 import tmdbConfig from "@/api/config/tmdb.config";
-import mediaApi from "@/api/media.api";
+import mediaApi from "@/api/modules/media.api";
 import { axiosResList } from "@/types/axiosRes.type";
 import { Image } from "@nextui-org/react";
 import { useEffect, useState } from "react";
@@ -31,7 +31,7 @@ const HeroSlice = () => {
                modules={[Autoplay]}
                autoplay={{
                   pauseOnMouseEnter: false,
-                  delay: 5000,
+                  delay: 2000,
                   stopOnLastSlide: false,
                   disableOnInteraction: false,
                }}

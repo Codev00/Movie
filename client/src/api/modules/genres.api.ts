@@ -1,5 +1,5 @@
 import { genreType } from "@/types/all.type";
-import publicClient from "./config/public.client";
+import publicClient from "../config/public.client";
 import { genreRes } from "@/types/axiosRes.type";
 
 const genresEndpoint = {

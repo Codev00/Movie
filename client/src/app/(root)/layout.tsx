@@ -14,7 +14,7 @@ export default function RootLayout({
    children: React.ReactNode;
 }) {
    return (
-      <section>
+      <section className="">
          <NavbarTop />
          {children}
          <Footer />

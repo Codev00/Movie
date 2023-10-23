@@ -1,6 +1,6 @@
 import { axiosResList } from "@/types/axiosRes.type";
-import privateClient from "./config/private.client";
-import publicClient from "./config/public.client";
+import privateClient from "../config/private.client";
+import publicClient from "../config/public.client";
 import { MediaTypeDetail, MediaTypeList } from "@/types/media.type";
 
 const mediaEndpoints = {

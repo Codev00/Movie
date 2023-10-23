@@ -1,4 +1,4 @@
-import genresApi from "@/api/genres.api";
+import genresApi from "@/api/modules/genres.api";
 import { Chip, Select, SelectItem } from "@nextui-org/react";
 import { PetIcon } from "../utils/icon/PetIcon";
 import { useEffect, useState } from "react";

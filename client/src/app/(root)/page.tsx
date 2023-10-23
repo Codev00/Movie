@@ -32,9 +32,9 @@ export default function Home() {
       <Suspense fallback={<Loading />}>
          <main className=" flex flex-col pt-[60px] md:pt-[0px]">
             <Banner mediaType="movie" mediaCategory="popular" />
+            <UpComing />
             <CategoryBanner name="Trending" data={["day", "week"]} />
             <CategoryBanner name="Top Rate" data={["movie", "tv"]} />
-            <UpComing />
          </main>
       </Suspense>
    );

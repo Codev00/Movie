@@ -5,7 +5,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { MediaTypeList } from "@/types/media.type";
 import tmdbConfig from "@/api/config/tmdb.config";
-import mediaApi from "@/api/media.api";
+import mediaApi from "@/api/modules/media.api";
 import Image from "next/image";
 import dayjs from "dayjs";
 import CircleRating from "./CircleRating";

@@ -1,6 +1,6 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import ImagePlay from "../utils/ImagePlay";
-import mediaApi from "@/api/media.api";
+import mediaApi from "@/api/modules/media.api";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { axiosResList } from "@/types/axiosRes.type";

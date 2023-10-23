@@ -1,5 +1,5 @@
 "use client";
-import mediaApi from "@/api/media.api";
+import mediaApi from "@/api/modules/media.api";
 import React, { useEffect, useState } from "react";
 import { MediaTypeList } from "@/types/media.type";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -36,7 +36,12 @@ const Banner = ({
             grabCursor={true}
             spaceBetween={0}
             slidesPerView={1}
-            autoplay={{ delay: 3000 }}
+            autoplay={{
+               pauseOnMouseEnter: false,
+               delay: 5000,
+               stopOnLastSlide: false,
+               disableOnInteraction: false,
+            }}
             loop={true}
             className="relative w-full h-full mySwiper"
          >

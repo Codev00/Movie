@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 interface AuthState {
    isLoggedIn: boolean;
    user: string;
-   favorites: {};
+   favorites: {}[];
 }
 
 const initialState = {
@@ -32,15 +32,6 @@ export const authSlice = createSlice({
       },
       setListFavorite: (state, action) => {
          state.favorites = action.payload;
-      },
-      removeFavorite: (state, action) => {
-         const { mediaId } = action.payload;
-         state.favorites = [...state.favorites].filter(
-            (e) => e.mediaId.toString() !== mediaId.toString()
-         );
-      },
-      addfavorite: (state, action) => {
-         state.favorites = [action.payload, ...state.favorites];
       },
    },
 });

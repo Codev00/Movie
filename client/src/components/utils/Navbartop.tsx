@@ -16,6 +16,7 @@ import {
    Avatar,
    DropdownMenu,
    DropdownItem,
+   Image,
 } from "@nextui-org/react";
 import { AcmeLogo } from "./icon/AcmeLogo";
 import { useDispatch, useSelector } from "react-redux";
@@ -57,7 +58,7 @@ const NavbarTop = () => {
          onMenuOpenChange={setIsMenuOpen}
          isBlurred={false}
          className={`${
-            scroll === 0 ? "md:bg-transparent" : "bg-black/70"
+            scroll === 0 ? "md:bg-transparent" : "bg-black/60"
          } bg-black/90 fixed `}
          classNames={{
             menuItem: ["hover:color-danger"],
@@ -87,8 +88,11 @@ const NavbarTop = () => {
                aria-label={isMenuOpen ? "Close menu" : "Open menu"}
                className="sm:hidden"
             />
-            <NavbarBrand className="text-white text-2xl font ">
-               <AcmeLogo />
+            <NavbarBrand
+               className="text-white text-2xl font flex gap-2 cursor-pointer"
+               onClick={() => router.push("/")}
+            >
+               <Image src="/images/github-alt.svg" width={35} />
                <p className="font-bold text-inherit peer cursor-pointer">
                   MA{" "}
                   <span className="bg-danger px-2 rounded-md peer-hover:line-through">
@@ -150,7 +154,7 @@ const NavbarTop = () => {
                      className="transition-transform object-cover"
                      color="danger"
                      size="md"
-                     src="/images/avatar.png"
+                     src="/images/avatar.svg"
                   />
                </DropdownTrigger>
                <DropdownMenu aria-label="Profile Actions" variant="flat">

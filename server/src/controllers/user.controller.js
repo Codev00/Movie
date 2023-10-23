@@ -1,6 +1,8 @@
 import userModel from "../models/user.model.js";
 import jsonwebtoken from "jsonwebtoken";
 import responseHandler from "../handlers/response.handler.js";
+import bcrypt from "bcrypt";
+const saltRounds = 10;
 
 const signup = async (req, res) => {
    try {
@@ -14,8 +16,8 @@ const signup = async (req, res) => {
       const user = new userModel();
       user.displayName = displayName;
       user.username = username;
-      user.setPassword(password);
-      console.log("setUser");
+      const salt = bcrypt.genSaltSync(saltRounds);
+      user.password = bcrypt.hashSync(password, salt);
 
       await user.save();
       const token = jsonwebtoken.sign(
@@ -44,7 +46,7 @@ const signin = async (req, res) => {
       if (!user) {
          return responseHandler.badrequest(res, "User not exist");
       }
-      if (!user.validpassword(password)) {
+      if (!bcrypt.compareSync(password, user.password)) {
          return responseHandler.badrequest(res, "Wrong password");
       }
 

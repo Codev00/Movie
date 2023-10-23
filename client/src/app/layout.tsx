@@ -2,9 +2,8 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Providers from "@/redux/Providers";
-import Footer from "@/components/utils/Footer";
 import "aos/dist/aos.css";
-import NavbarTop from "@/components/utils/Navbartop";
+import { ToastContainer } from "react-toastify";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,8 +18,22 @@ export default function RootLayout({
 }) {
    return (
       <html lang="en" data-theme="night" className="dark">
-         <body className={`overflow-x-hidden ${inter.className}`}>
-            <Providers>{children}</Providers>
+         <body className={`overflow-x-hidden ${inter.className} myCursor`}>
+            <Providers>
+               <ToastContainer
+                  position="top-right"
+                  autoClose={3000}
+                  hideProgressBar={false}
+                  newestOnTop={false}
+                  closeOnClick
+                  rtl={false}
+                  pauseOnFocusLoss
+                  draggable
+                  pauseOnHover
+                  theme="dark"
+               />
+               {children}
+            </Providers>
          </body>
       </html>
    );

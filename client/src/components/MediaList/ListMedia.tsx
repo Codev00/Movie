@@ -1,4 +1,4 @@
-import mediaApi from "@/api/media.api";
+import mediaApi from "@/api/modules/media.api";
 import { axiosResList } from "@/types/axiosRes.type";
 import React, { useLayoutEffect, useState } from "react";
 import Breadcrumbs from "../utils/Breadcrumbs";
@@ -48,8 +48,13 @@ const ListMedia = ({
    }, [mediaType, page, with_genres, kq]);
 
    return (
-      <div className="w-full min-h-[80px] flex flex-col">
-         <Breadcrumbs mediaType={mediaType} />
+      <div className="w-full min-h-[80px] flex flex-col px-2 md:px-0">
+         {/* <Breadcrumbs mediaType={mediaType} /> */}
+         <div className="w-[75%] md:w-[30%]">
+            <h1 className="mb-5 text-xl font-bold border-b-3 pb-2 border-b-danger">
+               Page {page}
+            </h1>
+         </div>
          <div className="w-full flex flex-wrap gap-y-4 justify-start md:justify-evenly gap-x-3">
             {data?.results.map((movie, index) => (
                <div
@@ -77,10 +82,11 @@ const ListMedia = ({
          {data?.total_pages && (
             <div className="w-full flex justify-center items-center my-7 px-6 md:px-0">
                <Pagination
-                  variant="bordered"
+                  variant="light"
                   radius="full"
                   size="lg"
                   showShadow
+                  showControls
                   initialPage={page}
                   color="danger"
                   total={100}

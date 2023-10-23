@@ -1,5 +1,5 @@
 "use client";
-import mediaApi from "@/api/media.api";
+import mediaApi from "@/api/modules/media.api";
 import React, { Suspense, useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { MediaTypeDetail } from "@/types/media.type";
